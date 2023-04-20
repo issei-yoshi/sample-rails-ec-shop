@@ -3,4 +3,6 @@ class Item < ApplicationRecord
     validates :name
     validates :price
   end
+
+  has_one_attached :image
 end
