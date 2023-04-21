@@ -7,5 +7,6 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @random_items = Item.all.sample(4)
   end
 end
