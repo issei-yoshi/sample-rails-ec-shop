@@ -50,7 +50,7 @@
                 <!-- Product name-->
                 <h5 class="fw-bolder"><%= item.name %></h5>
                 <!-- Product price-->
-                <%= item.price %>
+                <%= number_to_currency(item.price, unit: "￥", strip_insignificant_zeros: true) %>
               </div>
             </div>
             <!-- Product actions-->
