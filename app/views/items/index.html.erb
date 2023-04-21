@@ -43,7 +43,7 @@
         <div class="col mb-5">
           <div class="card h-100">
             <!-- Product image-->
-            <%= image_tag item.image.variant(resize: "450x300!").processed, class: "card-img-top" %>
+            <%= link_to image_tag(item.image.variant(resize: "450x300!").processed, class: "card-img-top"), item_path(item) %>
             <!-- Product details-->
             <div class="card-body p-4">
               <div class="text-center">
