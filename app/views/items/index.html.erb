@@ -55,13 +55,13 @@
             </div>
             <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <%= form_with url: add_item_path do |f| %>
-              <%= f.hidden_field :quantity, :value => 1 %>
-              <%= f.hidden_field :item_id, :value => item.id %>
-              <div class="text-center">
-                <%= f.submit 'Add to cart', class: 'btn btn-outline-dark mt-auto' %>
-              </div>
-            <% end %>
+              <%= form_with url: add_item_path do |f| %>
+                <%= f.hidden_field :quantity, :value => 1 %>
+                <%= f.hidden_field :item_id, :value => item.id %>
+                <div class="text-center">
+                  <%= f.submit 'Add to cart', class: 'btn btn-outline-dark mt-auto' %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

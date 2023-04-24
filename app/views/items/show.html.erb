@@ -41,12 +41,12 @@
         <p class="lead"><%= @item.description %></p>
         <%= form_with url: add_item_path do |f| %>
           <div class="d-flex">
-          <%= f.number_field :quantity, :value => 1, class: "form-control text-center me-3", min: 1, style: "max-width: 4rem" %>
-          <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= button_tag type: "submit", class: "btn btn-outline-dark flex-shrink-0" do %>
-            <i class="bi-cart-fill me-1"></i>
-            Add to cart
-          <% end %>
+            <%= f.number_field :quantity, :value => 1, class: "form-control text-center me-3", min: 1, style: "max-width: 4rem" %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <%= button_tag type: "submit", class: "btn btn-outline-dark flex-shrink-0" do %>
+              <i class="bi-cart-fill me-1"></i>
+              Add to cart
+            <% end %>
           </div>
         <% end %>
       </div>
@@ -74,13 +74,13 @@
             </div>
             <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <%= form_with url: add_item_path do |f| %>
-              <%= f.hidden_field :quantity, :value => 1 %>
-              <%= f.hidden_field :item_id, :value => item.id %>
-              <div class="text-center">
-                <%= f.submit 'Add to cart', class: 'btn btn-outline-dark mt-auto' %>
-              </div>
-            <% end %>
+              <%= form_with url: add_item_path do |f| %>
+                <%= f.hidden_field :quantity, :value => 1 %>
+                <%= f.hidden_field :item_id, :value => item.id %>
+                <div class="text-center">
+                  <%= f.submit 'Add to cart', class: 'btn btn-outline-dark mt-auto' %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
