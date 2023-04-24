@@ -1,3 +1,11 @@
 class Cart < ApplicationRecord
   has_many :cart_items
+
+  def total_price
+    total = 0
+    cart_items.each do |cart_item|
+      total += (cart_item.item.price * cart_item.quantity)
+    end
+    total
+  end
 end

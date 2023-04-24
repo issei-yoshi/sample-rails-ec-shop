@@ -29,7 +29,7 @@
           <% end %>
           <li class="list-group-item d-flex justify-content-between">
             <span>Total</span>
-            <strong>$20</strong>
+            <strong><%= number_to_currency(current_cart.total_price, unit: "￥", strip_insignificant_zeros: true) %></strong>
           </li>
         </ul>
 
