@@ -8,4 +8,12 @@ class Cart < ApplicationRecord
     end
     total
   end
+
+  def total_quantity
+    total = 0
+    cart_items.each do |cart_item|
+      total += cart_item.quantity
+    end
+    total
+  end
 end
