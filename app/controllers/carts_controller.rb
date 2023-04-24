@@ -14,4 +14,7 @@ class CartsController < ApplicationController
     @cart_item.save
     redirect_to current_cart
   end
+
+  def delete_item
+  end
 end
