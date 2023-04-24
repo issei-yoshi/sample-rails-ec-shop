@@ -18,5 +18,6 @@ class CartsController < ApplicationController
   def delete_item
     @cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
     @cart_item.delete
+    redirect_to current_cart
   end
 end
