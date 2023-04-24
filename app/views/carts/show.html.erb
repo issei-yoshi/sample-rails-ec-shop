@@ -18,10 +18,10 @@
           <% @carts.each do |cart_item| %>
             <li class="list-group-item d-flex justify-content-between lh-sm">
               <div>
-                <h6 class="my-0"><%= cart_item.name %></h6>
-                <small class="text-body-secondary">Brief description</small>
+                <h6 class="my-0"><%= cart_item.item.name %></h6>
+                <small class="text-body-secondary">数量: <%= cart_item.quantity %></small>
               </div>
-              <span class="text-body-secondary"><%= cart_item.price %></span>
+              <span class="text-body-secondary"><%= number_to_currency(cart_item.item.price * cart_item.quantity, unit: "￥", strip_insignificant_zeros: true) %></span>
             </li>
           <% end %>
         </ul>
