@@ -19,9 +19,9 @@
       <form class="d-flex">
         <%= link_to cart_path(current_cart) do %>
           <button class="btn btn-outline-dark" type="submit">
-          <i class="bi-cart-fill me-1"></i>
-          Cart
-          <span class="badge bg-dark text-white ms-1 rounded-pill"><%= current_cart.total_quantity %></span>
+            <i class="bi-cart-fill me-1"></i>
+            Cart
+            <span class="badge bg-dark text-white ms-1 rounded-pill"><%= current_cart.total_quantity %></span>
           </button>
         <% end %>
       </form>
