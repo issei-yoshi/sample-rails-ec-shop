@@ -21,7 +21,10 @@
                 <h6 class="my-0"><%= cart_item.item.name %></h6>
                 <small class="text-body-secondary">数量: <%= cart_item.quantity %></small>
               </div>
-              <span class="text-body-secondary"><%= number_to_currency(cart_item.item.price * cart_item.quantity, unit: "￥", strip_insignificant_zeros: true) %></span>
+              <div>
+                <h6 class=" my-0 text-body-secondary"><%= number_to_currency(cart_item.item.price * cart_item.quantity, unit: "￥", strip_insignificant_zeros: true) %></h6>
+                <small class="text-body-secondary text-end"><%= link_to "削除", delete_item_path(item_id: cart_item.item.id), data: {turbo_method: :delete} %></small>
+              </div>
             </li>
           <% end %>
         </ul>
