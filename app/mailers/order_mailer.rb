@@ -5,9 +5,12 @@ class OrderMailer < ApplicationMailer
   #
   #   en.order_mailer.creation_email.subject
   #
-  def creation_email
-    @greeting = "Hi"
+  def creation_email(order)
+    @order = order
 
-    mail to: "to@example.org"
+    mail(
+      subject: "注文完了のお知らせ",
+      to: @order.email
+    )
   end
 end
