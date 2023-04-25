@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :basic, only: %i[index show]
 
   def index
     @orders = Order.all
@@ -27,6 +28,12 @@ class OrdersController < ApplicationController
       end
       flash[:notice] = '購入ありがとうございます'
       redirect_to items_path
+    end
+  end
+
+  def basic
+    authenticate_or_request_with_http_basic do |name, password|
+      name == Rails.application.credentials.dig(:basic, :name) && password == Rails.application.credentials.dig(:basic, :password)
     end
   end
 
