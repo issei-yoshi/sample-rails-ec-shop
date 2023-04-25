@@ -26,6 +26,7 @@ class OrdersController < ApplicationController
         )
         item.destroy
       end
+      OrderMailer.creation_email(order).deliver_now
       flash[:notice] = '購入ありがとうございます'
       redirect_to items_path
     end
