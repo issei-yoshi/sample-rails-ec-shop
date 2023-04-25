@@ -22,7 +22,7 @@
                 </div>
                 <div>
                   <h6 class=" my-0 text-body-secondary"><%= number_to_currency(cart_item.item.price * cart_item.quantity, unit: "￥", strip_insignificant_zeros: true) %></h6>
-                  <small class="text-body-secondary text-end"><%= link_to "削除", carts_path(item_id: cart_item.item.id), data: {turbo_method: :delete} %></small>
+                  <small class="text-body-secondary text-end"><%= link_to "削除", cart_item_path(id: cart_item.item.id), data: {turbo_method: :delete} %></small>
                 </div>
               </li>
             <% end %>
