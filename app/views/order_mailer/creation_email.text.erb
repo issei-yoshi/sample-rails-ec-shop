@@ -1,3 +1,13 @@
-Order#creation_email
+<%= @order.user_name %>様
+購入明細書を送らせていただきます。
 
-<%= @greeting %>, find me in app/views/order_mailer/creation_email.text.erb
+購入日: <%= @order.created_at.strftime('%Y/%m/%d') %>
+合計金額: <%= number_to_currency(@order.billing_amount, unit: "￥", strip_insignificant_zeros: true) %>
+
+<% @order.order_details.each do |order_detail| %>
+  商品名: <%= order_detail.item.name %>
+  価格: <%= order_detail.item.price %>
+  個数: <%= order_detail.quantity %>
+  金額: <%= number_to_currency(order_detail.item.price * order_detail.quantity, unit: "￥", strip_insignificant_zeros: true) %>
+  ----------
+<% end %>
