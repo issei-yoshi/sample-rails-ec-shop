@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
         )
         item.destroy
       end
+      flash[:notice] = '購入ありがとうございます'
       redirect_to items_path
     end
   end
