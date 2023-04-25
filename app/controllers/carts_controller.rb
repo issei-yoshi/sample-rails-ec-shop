@@ -14,7 +14,7 @@ class CartsController < ApplicationController
     redirect_to carts_path
   end
 
-  def delete_item
+  def destroy
     @cart_item.delete
     redirect_to carts_path
   end
