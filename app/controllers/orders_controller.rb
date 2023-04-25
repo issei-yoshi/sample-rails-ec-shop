@@ -4,6 +4,10 @@ class OrdersController < ApplicationController
     @orders = Order.all
   end
 
+  def show
+    @order = Order.find(params[:id])
+  end
+
   def create
     carts = current_cart.cart_items
     price = current_cart.total_price
