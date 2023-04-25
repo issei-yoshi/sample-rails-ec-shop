@@ -5,4 +5,7 @@ class CartItemsController < ApplicationController
     @cart_item.save
     redirect_to carts_path
   end
+
+  def destroy
+  end
 end
