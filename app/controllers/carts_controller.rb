@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CartsController < ApplicationController
-  before_action :set_cart_item, only: %i[delete_item]
+  before_action :set_cart_item, only: %i[destroy]
 
   def show
     @carts = current_cart.cart_items
