@@ -8,10 +8,6 @@ class Cart < ApplicationRecord
   end
 
   def total_quantity
-    total = 0
-    cart_items.each do |cart_item|
-      total += cart_item.quantity
-    end
-    total
+    cart_items.inject(0){|i, cart_item| i += cart_item.quantity}
   end
 end
