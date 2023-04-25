@@ -1,4 +1,8 @@
 class OrdersController < ApplicationController
+
+  def index
+  end
+
   def create
     carts = current_cart.cart_items
     price = current_cart.total_price
