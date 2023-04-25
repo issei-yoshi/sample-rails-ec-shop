@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
 
   def basic
     authenticate_or_request_with_http_basic do |name, password|
-      name == Rails.application.credentials.dig(:basic, :name) && password == Rails.application.credentials.dig(:basic, :password)
+      name == ENV['BASIC_AUTH_NAME'] && password == ENV['BASIC_AUTH_PASSWORD']
     end
   end
 
