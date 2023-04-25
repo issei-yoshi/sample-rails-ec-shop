@@ -12,12 +12,12 @@ class CartsController < ApplicationController
 
     @cart_item.quantity += params[:quantity].to_i
     @cart_item.save
-    redirect_to current_cart
+    redirect_to carts_path
   end
 
   def delete_item
     @cart_item.delete
-    redirect_to current_cart
+    redirect_to carts_path
   end
 
   private
