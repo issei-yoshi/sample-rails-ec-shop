@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
   before_action :basic, only: %i[index show]
 
@@ -16,20 +18,20 @@ class OrdersController < ApplicationController
     order = Order.new(order_params)
     order.billing_amount = price
 
-    if order.save
-      carts.each do |item|
-        OrderDetail.create(
-          order_id: order.id,
-          item_id: item.item_id,
-          quantity: item.quantity,
-          price: item.item.price
-        )
-        item.destroy
-      end
-      OrderMailer.creation_email(order).deliver_now
-      flash[:notice] = '購入ありがとうございます'
-      redirect_to items_path
+    return unless order.save
+
+    carts.each do |item|
+      OrderDetail.create(
+        order_id: order.id,
+        item_id: item.item_id,
+        quantity: item.quantity,
+        price: item.item.price
+      )
+      item.destroy
     end
+    OrderMailer.creation_email(order).deliver_now
+    flash[:notice] = '購入ありがとうございます'
+    redirect_to items_path
   end
 
   def basic
@@ -41,18 +43,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(
-      :first_name,
-      :last_name,
-      :user_name,
-      :email,
-      :address,
-      :address_building,
-      :postal_code,
-      :cardholder_name,
-      :card_number,
-      :card_expiration,
-      :card_cvv
-      )
+    params.require(:order).permit(:first_name, :last_name, :user_name, :email, :address, :address_building,
+                                  :postal_code, :cardholder_name, :card_number, :card_expiration, :card_cvv)
   end
 end
