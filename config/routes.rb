@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   # resources :tasks
   root 'items#index'
   resources :items, only: %i[index show]
-  resource :carts, only: %i[show create destroy]
+  resource :carts, only: %i[show destroy]
+  resources :cart_items, only: %i[create]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
