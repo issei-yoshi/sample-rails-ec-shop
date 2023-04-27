@@ -16,4 +16,25 @@ class Order < ApplicationRecord
     validates :billing_amount
     validates :postal_code
   end
+
+  attr_accessor :cart, :order
+
+  def buy
+    transaction do
+      self.billing_amount = cart.total_price
+      cart.cart_items.each do |cart_item|
+        order_details.build(
+          order_id: id,
+          item_name: cart_item.item.name,
+          quantity: cart_item.quantity,
+          price: cart_item.item.price
+        )
+      end
+      cart.destroy
+      save!
+    end
+  rescue StandardError => e
+    Rails.logger.error e
+    false
+  end
 end

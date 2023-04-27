@@ -12,23 +12,12 @@ class OrdersController < ApplicationController
   end
 
   def create
-    carts = current_cart.cart_items
-    price = current_cart.total_price
-
     order = Order.new(order_params)
-    order.billing_amount = price
+    order.cart = current_cart
 
-    return unless order.save
+    return unless order.buy
 
-    carts.each do |item|
-      OrderDetail.create(
-        order_id: order.id,
-        item_name: item.item.name,
-        quantity: item.quantity,
-        price: item.item.price
-      )
-      item.destroy
-    end
+    session[:cart_id] = nil
     OrderMailer.creation_email(order).deliver_now
     flash[:notice] = '購入ありがとうございます'
     redirect_to items_path
