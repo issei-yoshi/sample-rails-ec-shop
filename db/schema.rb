@@ -66,13 +66,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_25_094315) do
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.bigint "item_id", null: false
     t.bigint "order_id", null: false
+    t.string "item_name", null: false
     t.integer "quantity", null: false
     t.integer "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_order_details_on_item_id"
     t.index ["order_id"], name: "index_order_details_on_order_id"
   end
 
@@ -105,6 +104,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_25_094315) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "items"
-  add_foreign_key "order_details", "items"
   add_foreign_key "order_details", "orders"
 end
