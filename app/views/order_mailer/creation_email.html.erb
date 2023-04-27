@@ -20,10 +20,10 @@
         <tbody>
           <% @order.order_details.each do |order_detail| %>
             <tr>
-              <th scope="row"><%= order_detail.item.name %></th>
-              <td><%= order_detail.item.price %></td>
+              <th scope="row"><%= order_detail.item_name %></th>
+              <td><%= order_detail.price %></td>
               <td><%= order_detail.quantity %></td>
-              <td><%= number_to_currency(order_detail.item.price * order_detail.quantity, unit: "￥", strip_insignificant_zeros: true) %></td>
+              <td><%= number_to_currency(order_detail.price * order_detail.quantity, unit: "￥", strip_insignificant_zeros: true) %></td>
             </tr>
           <% end %>
         </tbody>

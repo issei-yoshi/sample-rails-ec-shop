@@ -5,9 +5,9 @@
 合計金額: <%= number_to_currency(@order.billing_amount, unit: "￥", strip_insignificant_zeros: true) %>
 
 <% @order.order_details.each do |order_detail| %>
-  商品名: <%= order_detail.item.name %>
-  価格: <%= order_detail.item.price %>
+  商品名: <%= order_detail.item_name %>
+  価格: <%= order_detail.price %>
   個数: <%= order_detail.quantity %>
-  金額: <%= number_to_currency(order_detail.item.price * order_detail.quantity, unit: "￥", strip_insignificant_zeros: true) %>
+  金額: <%= number_to_currency(order_detail.price * order_detail.quantity, unit: "￥", strip_insignificant_zeros: true) %>
   ----------
 <% end %>

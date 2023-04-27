@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     carts.each do |item|
       OrderDetail.create(
         order_id: order.id,
-        item_id: item.item_id,
+        item_name: item.item.name,
         quantity: item.quantity,
         price: item.item.price
       )
