@@ -42,6 +42,16 @@
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Billing address</h4>
         <%= form_with model: @order do |f| %>
+          <%= @order.errors.inspect %>
+          <% if @order.errors.any? %>
+            <div>
+              <ul>
+                <% @order.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
           <form class="needs-validation" novalidate="">
             <div class="row g-3">
               <div class="col-sm-6">

@@ -12,15 +12,19 @@ class OrdersController < ApplicationController
   end
 
   def create
-    order = Order.new(order_params)
-    order.cart = current_cart
+    @order = Order.new(order_params)
+    @order.cart = current_cart
 
-    return unless order.buy
-
-    session[:cart_id] = nil
-    OrderMailer.creation_email(order).deliver_now
-    flash[:notice] = '購入ありがとうございます'
-    redirect_to items_path
+    if @order.buy
+      session[:cart_id] = nil
+      OrderMailer.creation_email(@order).deliver_now
+      flash[:notice] = '購入ありがとうございます'
+      redirect_to items_path
+    else
+      @order = Order.new(order_params)
+      @order.valid?
+      render 'carts/show'
+    end
   end
 
   def basic
