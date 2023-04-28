@@ -21,8 +21,6 @@ class OrdersController < ApplicationController
       flash[:notice] = '購入ありがとうございます'
       redirect_to items_path
     else
-      @order = Order.new(order_params)
-      @order.valid?
       @carts = current_cart.cart_items
       render 'carts/show', status: :unprocessable_entity
     end
