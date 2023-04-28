@@ -5,7 +5,7 @@
       <h4>購入日:  <%= @order.created_at.strftime('%Y/%m/%d') %></h4>
       <h4>ユーザー名:  <%= @order.user_name %>様</h4>
       <h4>送付先:  <%= @order.address + @order.address_building %></h4>
-      <h4>合計金額:  <%= number_to_currency(@order.billing_amount, unit: "￥", strip_insignificant_zeros: true) %></h4>
+      <h4>合計金額:  <%= number_to_currency(@order.billing_amount, unit: "￥", strip_insignificant_zeros: true, :format=>"%u%n") %></h4>
     </div>
     <div class="my-5">
       <table class="table">
@@ -23,7 +23,7 @@
               <th scope="row"><%= order_detail.item_name %></th>
               <td><%= order_detail.price %></td>
               <td><%= order_detail.quantity %></td>
-              <td><%= number_to_currency(order_detail.price * order_detail.quantity, unit: "￥", strip_insignificant_zeros: true) %></td>
+              <td><%= number_to_currency(order_detail.price * order_detail.quantity, unit: "￥", strip_insignificant_zeros: true, :format=>"%u%n") %></td>
             </tr>
           <% end %>
         </tbody>

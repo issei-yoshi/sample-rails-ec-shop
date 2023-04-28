@@ -21,14 +21,14 @@
                   <small class="text-body-secondary">数量: <%= cart_item.quantity %></small>
                 </div>
                 <div>
-                  <h6 class=" my-0 text-body-secondary"><%= number_to_currency(cart_item.item.price * cart_item.quantity, unit: "￥", strip_insignificant_zeros: true) %></h6>
+                  <h6 class=" my-0 text-body-secondary"><%= number_to_currency(cart_item.item.price * cart_item.quantity, unit: "￥", strip_insignificant_zeros: true, :format=>"%u%n") %></h6>
                   <small class="text-body-secondary text-end"><%= link_to "削除", cart_item_path(id: cart_item.item.id), data: {turbo_method: :delete} %></small>
                 </div>
               </li>
             <% end %>
             <li class="list-group-item d-flex justify-content-between">
               <span>Total</span>
-              <strong><%= number_to_currency(current_cart.total_price, unit: "￥", strip_insignificant_zeros: true) %></strong>
+              <strong><%= number_to_currency(current_cart.total_price, unit: "￥", strip_insignificant_zeros: true, :format=>"%u%n") %></strong>
             </li>
           </ul>
           <form class="card p-2">

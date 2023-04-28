@@ -2,7 +2,7 @@
 購入明細書を送らせていただきます。
 
 購入日: <%= @order.created_at.strftime('%Y/%m/%d') %>
-合計金額: <%= number_to_currency(@order.billing_amount, unit: "￥", strip_insignificant_zeros: true) %>
+合計金額: <%= number_to_currency(@order.billing_amount, unit: "￥", strip_insignificant_zeros: true, :format=>"%u%n") %>
 
 <% @order.order_details.each do |order_detail| %>
   商品名: <%= order_detail.item_name %>
