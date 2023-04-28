@@ -23,6 +23,7 @@ class OrdersController < ApplicationController
     else
       @order = Order.new(order_params)
       @order.valid?
+      @carts = current_cart.cart_items
       render 'carts/show', status: :unprocessable_entity
     end
   end
