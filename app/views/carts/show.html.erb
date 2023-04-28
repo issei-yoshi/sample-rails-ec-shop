@@ -42,7 +42,6 @@
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Billing address</h4>
         <%= form_with model: @order do |f| %>
-          <%= @order.errors.inspect %>
           <% if @order.errors.any? %>
             <div>
               <ul>
