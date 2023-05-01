@@ -55,3 +55,5 @@ item6 = Item.new(
 )
 item6.image.attach(io: File.open(Rails.root.join('app/assets/images/shoes.jpg')), filename: 'shoes.jpg')
 item6.save!
+
+Cart.create

@@ -1,0 +1,13 @@
+<%= @order.user_name %>様
+購入明細書を送らせていただきます。
+
+購入日: <%= @order.created_at.strftime('%Y/%m/%d') %>
+合計金額: <%= number_to_currency(@order.billing_amount, unit: "￥", strip_insignificant_zeros: true, :format=>"%u%n") %>
+
+<% @order.order_details.each do |order_detail| %>
+  商品名: <%= order_detail.item_name %>
+  価格: <%= order_detail.price %>
+  個数: <%= order_detail.quantity %>
+  金額: <%= number_to_currency(order_detail.price * order_detail.quantity, unit: "￥", strip_insignificant_zeros: true) %>
+  ----------
+<% end %>

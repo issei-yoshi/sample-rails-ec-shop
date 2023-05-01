@@ -1,0 +1,33 @@
+<div class="container px-4 px-lg-5 my-5">
+  <div class="text-center">
+    <h1 class="display-4 fw-bolder">購入明細書</h1>
+    <div class="flex my-3">
+      <h4>購入日:  <%= @order.created_at.strftime('%Y/%m/%d') %></h4>
+      <h4>ユーザー名:  <%= @order.user_name %>様</h4>
+      <h4>送付先:  <%= @order.address + @order.address_building %></h4>
+      <h4>合計金額:  <%= number_to_currency(@order.billing_amount, unit: "￥", strip_insignificant_zeros: true, :format=>"%u%n") %></h4>
+    </div>
+    <div class="my-5">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">商品名</th>
+            <th scope="col">価格</th>
+            <th scope="col">個数</th>
+            <th scope="col">金額</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do |order_detail| %>
+            <tr>
+              <th scope="row"><%= order_detail.item_name %></th>
+              <td><%= order_detail.price %></td>
+              <td><%= order_detail.quantity %></td>
+              <td><%= number_to_currency(order_detail.price * order_detail.quantity, unit: "￥", strip_insignificant_zeros: true, :format=>"%u%n") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

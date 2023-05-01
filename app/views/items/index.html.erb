@@ -1,3 +1,4 @@
+<%= render 'shared/flash_messages' %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container px-4 px-lg-5">
     <a class="navbar-brand" href="#!">Start Bootstrap</a>
@@ -52,7 +53,7 @@
                 <!-- Product name-->
                 <h5 class="fw-bolder"><%= item.name %></h5>
                 <!-- Product price-->
-                <%= number_to_currency(item.price, unit: "￥", strip_insignificant_zeros: true) %>
+                <%= number_to_currency(item.price, unit: "￥", strip_insignificant_zeros: true, :format=>"%u%n") %>
               </div>
             </div>
             <!-- Product actions-->
