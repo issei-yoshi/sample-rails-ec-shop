@@ -15,9 +15,17 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.cart = current_cart
 
+    code = current_cart.promotion_code
+    promotion_code = PromotionCode.find_by(code: code)
+    discount = promotion_code.discount
+    @order.billing_amount = current_cart.total_price - discount
+
     if @order.buy
       session[:cart_id] = nil
       OrderMailer.creation_email(@order).deliver_now
+      promotion_code.update(
+        used: 1
+      )
       flash[:notice] = '購入ありがとうございます'
       redirect_to items_path
     else

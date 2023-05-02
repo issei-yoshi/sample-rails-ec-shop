@@ -21,7 +21,6 @@ class Order < ApplicationRecord
 
   def buy
     transaction do
-      self.billing_amount = cart.total_price
       cart.cart_items.each do |cart_item|
         order_details.build(
           order_id: id,
