@@ -27,13 +27,15 @@
                 </div>
               </li>
             <% end %>
-            <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
-              <div class="text-success">
-                <h6 class="my-0">Promo code</h6>
-                <small><%= @code %></small>
-              </div>
-              <span class="text-success"><%= number_to_currency(@discount, unit: "￥", strip_insignificant_zeros: true, :format=>"%u%n") %></span>
-            </li>
+            <% if @code %>
+              <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
+                <div class="text-success">
+                  <h6 class="my-0">Promo code</h6>
+                  <small><%= @code %></small>
+                </div>
+                <span class="text-success"><%= number_to_currency(@discount, unit: "￥", strip_insignificant_zeros: true, :format=>"%u%n") %></span>
+              </li>
+            <% end %>
             <li class="list-group-item d-flex justify-content-between">
               <span>Total</span>
               <strong>
