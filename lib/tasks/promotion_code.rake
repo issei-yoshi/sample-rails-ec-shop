@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 namespace :promotion_code do
-  desc "create 10 promotion codes"
+  desc 'create 10 promotion codes'
   task generate: :environment do
     10.times do
       code = SecureRandom.alphanumeric(7)

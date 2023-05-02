@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PromotionCode < ApplicationRecord
   with_options presence: true do
     validates :code
