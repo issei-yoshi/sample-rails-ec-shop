@@ -5,4 +5,6 @@ class PromotionCode < ApplicationRecord
   end
 
   validates :code, uniqueness: true
+
+  enum :used, { inactivated: 0, activated: 1 }
 end
