@@ -23,11 +23,9 @@ class OrdersController < ApplicationController
     if @order.buy
       session[:cart_id] = nil
       OrderMailer.creation_email(@order).deliver_now
-      if promotion_code
-        promotion_code.update(
-          used: 1
-        )
-      end
+      promotion_code&.update(
+        used: 1
+      )
       flash[:notice] = '購入ありがとうございます'
       redirect_to items_path
     else
