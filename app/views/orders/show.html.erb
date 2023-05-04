@@ -26,6 +26,14 @@
               <td><%= number_to_currency(order_detail.price * order_detail.quantity, unit: "￥", strip_insignificant_zeros: true, :format=>"%u%n") %></td>
             </tr>
           <% end %>
+          <% if @order.discount != nil && @order.discount > 0 %>
+            <tr>
+              <th scope="row">割引額</th>
+              <td></td>
+              <td></td>
+              <td><%= number_to_currency(@order.discount, unit: "￥", strip_insignificant_zeros: true, :format=>"%u%n") %></td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
