@@ -27,11 +27,11 @@
                 </div>
               </li>
             <% end %>
-            <% if @code %>
+            <% if current_cart.promotion_code %>
               <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
                 <div class="text-success">
                   <h6 class="my-0">Promo code</h6>
-                  <small><%= @code %></small>
+                  <small><%= current_cart.promotion_code %></small>
                 </div>
                 <span class="text-success"><%= number_to_currency(@discount, unit: "￥", strip_insignificant_zeros: true, :format=>"%u%n") %></span>
               </li>
