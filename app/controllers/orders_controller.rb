@@ -15,8 +15,8 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.cart = current_cart
 
-    code = current_cart.promotion_code
-    promotion_code = PromotionCode.find_by(code: code)
+    # code = current_cart.promotion_code
+    promotion_code = PromotionCode.find_by(code: current_cart.promotion_code)
     @discount = promotion_code&.discount || 0
     @order.discount = @discount
     @order.billing_amount = current_cart.total_price - @discount
